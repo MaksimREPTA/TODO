@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo</title>
+    <link rel="stylesheet" href="./css/sakura.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <nav>
+      <h1>pull rquest</h1>
+      <h1>pull rquest</h1>
+      <h1>pull rquest</h1>
+      <h1>Type your task</h1>
+      <p id="user"></p>
+    </nav>
+
+    <input id="newTaskInput" type="text" placeholder="Add new task" />
+    <button id="createButton">Create</button>
+
+    <h4 class="subtitle">Your tasks:</h4>
+
+    <label for="filterByStatus">Filter by status:</label>
+    <select id="filterByStatus">
+      <option value="all">All</option>
+      <option value="created">Created</option>
+      <option value="started">Started</option>
+      <option value="completed">Completed</option>
+    </select>
+
+    <!-- Новое поле поиска -->
+    <input id="searchInput" type="text" placeholder="Search tasks" />
+
+    <ul id="tasksList"></ul>
+
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
