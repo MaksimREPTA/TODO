@@ -1,36 +1,3 @@
-const mockData = [
-  {
-    id: crypto.randomUUID(),
-    title: "Buy groceries",
-    status: "created", // created, started, completed
-  },
-  {
-    id: crypto.randomUUID(),
-    title: "Clean the house",
-    status: "started",
-  },
-  {
-    id: crypto.randomUUID(),
-    title: "Walk the dog",
-    status: "completed",
-  },
-  {
-    id: crypto.randomUUID(),
-    title: "Do homework",
-    status: "created",
-  },
-  {
-    id: crypto.randomUUID(),
-    title: "Go to the gym",
-    status: "started",
-  },
-  {
-    id: crypto.randomUUID(),
-    title: "Read a book",
-    status: "completed",
-  },
-];
-
 export const data = {
   tasks: [],
   getTasks: function () {
@@ -55,7 +22,6 @@ export const data = {
       if (task.id === id) {
         return { ...task, status: nextStatus };
       }
-
       return task;
     });
     this.setTasks();
@@ -67,6 +33,7 @@ export const data = {
         id: crypto.randomUUID(),
         title: newTitle,
         status: "created",
+        createdAt: Date.now(), // cia kuria data buvo sukurtas taskas
       },
     ];
     this.setTasks();

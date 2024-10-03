@@ -11,11 +11,12 @@ function printSingleTask(task, printAllTasks) {
   const deleteButton = document.createElement("button");
 
   const statusButtonLabel = getStatusButtonLabel(task.status);
-  taskLi.textContent = task.title;
+  taskLi.textContent = `${task.title} (Created at: ${new Date(
+    task.createdAt
+  ).toLocaleString()})`; // funkcija, parodyti sukurimo data
   statusButton.textContent = statusButtonLabel;
   deleteButton.textContent = "Delete";
 
-  // add styles
   taskLi.classList.add("task");
   if (task.status === "started") {
     taskLi.classList.add("task--started");
@@ -27,7 +28,6 @@ function printSingleTask(task, printAllTasks) {
 
   buttonsContainer.classList.add("buttonsContainer");
 
-  // add event listeners
   statusButton.addEventListener("click", () => {
     data.changeTaskStatus(task.id, getTaskNextStatus(task.status));
     printAllTasks();

@@ -2,12 +2,18 @@ import { printSingleTask } from "./printSingleTask.js";
 import { filterStatus } from "./main.js";
 import { data } from "./data.js";
 
-let searchQuery = ""; // filtras paieskai pagal pavadinima
+let searchQuery = "";
+let sortOrder = "newest";
 
-function setSearchQuery(request) {
-  searchQuery = request;
+function setSearchQuery(query) {
+  searchQuery = query;
   printAllTasks();
-} // funkcija, kad atnaujinti paieska
+} // funkcija atnaujinti paieskos eilute
+
+function setSortOrder(order) {
+  sortOrder = order;
+  printAllTasks();
+} // funkcija atnaujinti eiliskuma pagal sortinima
 
 function printAllTasks() {
   const tasksList = document.getElementById("tasksList");
@@ -18,7 +24,17 @@ function printAllTasks() {
     return;
   }
 
-  data.tasks
+  // sortinimas pagal sukurimo data
+  const sortedTasks = data.tasks.slice().sort((a, b) => {
+    // sortinam pagal createdAt
+    if (sortOrder === "newest") {
+      return b.createdAt - a.createdAt; // sortinimas nuo naujausnio iki seniausio
+    } else {
+      return a.createdAt - b.createdAt; // sortinimas nuo seniausio iki naujausnio
+    }
+  });
+
+  sortedTasks
     .filter((singleTask) => {
       const matchesStatus =
         filterStatus === "all" || singleTask.status === filterStatus;
@@ -45,4 +61,4 @@ function createNewTask() {
   document.getElementById("newTaskInput").value = "";
 }
 
-export { createNewTask, printAllTasks, setSearchQuery };
+export { createNewTask, printAllTasks, setSearchQuery, setSortOrder };

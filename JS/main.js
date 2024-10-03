@@ -2,6 +2,7 @@ import {
   createNewTask,
   printAllTasks,
   setSearchQuery,
+  setSortOrder,
 } from "./taskFunctions.js";
 import { printUser } from "./printUser.js";
 
@@ -25,7 +26,12 @@ document.getElementById("filterByStatus").addEventListener("change", () => {
 });
 
 document.getElementById("searchInput").addEventListener("input", (event) => {
-  setSearchQuery(event.target.value); // perdadame teksta i funkcija
+  setSearchQuery(event.target.value);
+});
+
+// cia kad pasortinti pagal data
+document.getElementById("sortByDate").addEventListener("change", (event) => {
+  setSortOrder(event.target.value); // atnaujinimui
 });
 
 printAllTasks();
